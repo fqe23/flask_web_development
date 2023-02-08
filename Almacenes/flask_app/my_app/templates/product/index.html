@@ -1,0 +1,16 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+    {% for key,product in products.items() if product['price'] and product['price'] >= 100 %}
+            <div>
+
+                {{ loop.index }}
+                {{ loop.first }}
+
+                <a href="{{ url_for('product.show', id=key) }}">{{ product['name'] }}</a>
+
+                {{ loop.previtem }}
+                {{ loop.cycle('impar', 'par') }}
+            </div>
+    {% endfor %}
+{% endblock %}
